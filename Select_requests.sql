@@ -1,3 +1,33 @@
+-- Задание 2
+
+-- Название и продолжительность самого длительного трека.
+SELECT t.Title, t.Duration
+FROM Tracks t
+WHERE t.Duration = (SELECT MAX(Duration) FROM Tracks);
+
+-- Название треков, продолжительность которых не менее 3,5 минут.
+SELECT Title
+FROM Tracks
+WHERE Duration >= '00:03:30';
+
+-- Названия сборников, вышедших в период с 2018 по 2020 год включительно.
+SELECT Title
+FROM Collections
+WHERE ReleaseYear between 2018 and 2020;
+
+-- Исполнители, чьё имя состоит из одного слова.
+SELECT Name
+FROM Artists
+WHERE POSITION(' ' IN Name) = 0;
+
+-- Название треков, которые содержат слово «мой» или «my».
+SELECT Title
+FROM Tracks
+WHERE LOWER(Title) LIKE '%мой%' OR LOWER(Title) LIKE '%my%';
+
+
+-- Задание 3
+
 -- Количество исполнителей в каждом жанре.
 SELECT g.Name AS GenreName, COUNT(ag.ArtistID) AS ArtistCount
 FROM Genres g
@@ -35,6 +65,9 @@ JOIN Albums a ON t.AlbumID = a.AlbumID
 JOIN ArtistAlbums aa ON a.AlbumID = aa.AlbumID
 JOIN Artists ar ON aa.ArtistID = ar.ArtistID
 WHERE ar.Name = 'Ширан Эд';
+
+
+-- Задание 4
 
 -- Названия альбомов, в которых присутствуют исполнители более чем одного жанра.
 SELECT DISTINCT a.Title AS AlbumTitle

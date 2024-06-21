@@ -1,10 +1,10 @@
 -- Сначала добавлял по одному, смотря id добавленных строк
 
-insert into artists (Name) 
-values ('Ширан Эд');
+INSERT INTO artists (Name) 
+VALUES ('Ширан Эд'), ('Инкин Павел');
 
-insert into albums (title, releaseyear)
-values ('No.6 Collaborations Project', 2019);
+INSERT INTO albums (title, releaseyear)
+VALUES ('No.6 Collaborations Project', 2019), ('Netology Project', 2024);
 
 insert into tracks (title, duration, albumid)
 values ('Happier', '00:03:27', 10);
@@ -13,16 +13,17 @@ insert into genres (name)
 values ('Фолк');
 
 insert into artistgenres (artistid, genreid)
-values (9, 7);
+values (9, 7), (1, 1);
 
 insert into artistalbums (artistid, albumid)
 values (9, 10);
 
-insert into collections (title, releaseyear)
-values ('Slumdon Bridge', 2019);
+INSERT INTO collections (title, releaseyear)
+VALUES ('Slumdon Bridge', 2019), ('Netology Cool', 2019);
 
 insert into collectiontracks (collectionid, trackid)
 values (4, 21);
+
 
 
 -- Затем прочитал про RETURNING и CURRVAL, решил использовать RETURNING ... INTO ... + добавил временную таблицу для переменных
